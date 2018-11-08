@@ -1,7 +1,5 @@
 package view;
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.sql.Connection;
@@ -9,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.PreparedStatement;
 import model.Mail;
 
 public class MailListReaderBD {
@@ -26,8 +23,8 @@ public class MailListReaderBD {
         return conn;
     }
     
-    public ArrayList read() throws FileNotFoundException, IOException{
-        String sql = "SELECT * FROM email";
+    public ArrayList read() throws IOException{
+        String sql = "SELECT DIRECCION FROM email";
         try (Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql)){
